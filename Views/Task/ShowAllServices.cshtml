@@ -1,0 +1,46 @@
+﻿@using Task = Final_Project.Models.Task;
+
+@{
+	Layout = "_AllTasksLayout";
+    ViewData["Title"] = "ShowAllServices";
+}
+@model List<Task>
+
+
+@foreach (Task item in Model)
+{
+
+	<div class="col-lg-4 col-sm-6 mb-4">
+		<!-- Portfolio item 1-->
+		<div class="portfolio-item">
+			<a class="portfolio-link" data-bs-toggle="modal">
+				@*<div class="portfolio-hover">
+			<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+			</div>*@
+				<div class="image-container">
+
+					<a href="/Task/Details/@item.Id"><img class="portfolio-hover img-fluid" src="/images/@item.Image" alt="..." style="width:350px;height:250px;" /></a>
+
+				</div>
+				<br>
+				<div style="text-align: center;">
+					<a href="/Order/SelectedAsk?seviceType=@item.Title" class="btn btn-outline-success" style="width:120px;margin:0 auto;">Ask</a>
+				</div>
+			</a>
+			<div class="portfolio-caption">
+				<div class="portfolio-caption-heading">@item.Title</div>
+				<div class="portfolio-caption-subheading text-muted">Average per service: @item.MinimumAmount $</div>
+			</div>
+		</div>
+	</div>
+	<br />
+	
+
+
+}
+<hr />
+<br />
+<a href="/Order/AskService" class="btn btn-outline-success" style="width:250px;margin:0 auto;" >Ask for service</a>
+<a href="/Order/ShowOrders" class="btn btn-outline-success" style="width:250px;margin:0 auto;">Check Your Orders</a>
+<a href="/Task/Index" class="btn btn-outline-success" style="width:250px;margin:0 auto;">Back To Home</a>
+

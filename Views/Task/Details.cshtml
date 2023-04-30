@@ -1,0 +1,23 @@
+﻿@using Task = Final_Project.Models.Task;
+@model Task
+@{
+    ViewData["Title"] = "Details";
+	Layout = "_PageWithNavLayout";
+}
+
+<div class="card" style="width:500px;margin:0 auto;margin-top:40px">
+	<img class="card-img-top" src="/images/@Model.Image" alt="Card image">
+	<div class="card-body">
+		<h4 class="card-title">@Model.Title</h4>
+		<p class="card-text">@Model.Description</p>
+		<p class="card-text">Minimum Amount: $@Model.MinimumAmount</p>
+
+		<a href="/Order/SelectedAsk?seviceType=@Model.Title" class="btn btn-primary">Ask Now</a>
+		<a href="/Task/ShowAllServices" class="btn btn-primary">Back</a>
+
+	</div>
+</div>
+
+
+
+

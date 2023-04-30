@@ -1,0 +1,81 @@
+﻿@using Task = Final_Project.Models.Task;
+@model List<Task>
+
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "_Main";
+	List<TaskDoer> DoersList = ViewBag.DoersList;
+}
+
+<h4 >Popular Services In Your Area</h4>
+<br />
+<br />
+
+
+
+@foreach (var item in Model)
+{
+
+	<div class="col-lg-4 col-sm-6 mb-4">
+		<!-- Portfolio item 1-->
+		<div class="portfolio-item">
+			<a class="portfolio-link" data-bs-toggle="modal">
+				
+				<div class="image-container">
+					<a href="/Task/Details/@item.Id">
+						<img  class="portfolio-hover img-fluid" src="/images/@item.Image" alt="..." style="width:350px;height:250px;border-radius:15px" /></a>
+				</div>
+			</a>
+			
+			<div class="portfolio-caption">
+				<div class="portfolio-caption-heading">@item.Title</div>
+				<div class="portfolio-caption-subheading text-muted">Average per service: @item.MinimumAmount $</div>
+			</div>
+		</div>
+	</div>
+}
+<div style="width:300px;margin: 0 auto;">
+
+	<a href="/Task/ShowAllServices" class="btn btn-primary btn-xl text-uppercase" style="margin-bottom:30px;">View All Services</a>
+	<br />
+
+</div>
+<hr />
+<br />
+
+<h4>Explore Top Rated Taskers</h4>
+
+@foreach (var item in DoersList)
+{
+
+	<div class="col-lg-4 col-sm-6 mb-4">
+		<!-- Portfolio item 1-->
+		<div class="portfolio-item">
+			<a class="portfolio-link" data-bs-toggle="modal">
+
+				<div class="image-container">
+					<a href="/Doer/GetById/@item.Id">
+						<img class="portfolio-hover img-fluid" src="/Doers/@item.Image" alt="..."
+							 style="width:360px;height:250px;border: 1px solid #eee; border-radius:15px" /></a>
+				</div>
+			</a>
+
+			<div class="portfolio-caption">
+				<div class="portfolio-caption-heading">@item.Name</div>
+				<div class="portfolio-caption-subheading text-muted">Salary per Hour: @item.SalaryPerHour $</div>
+			</div>
+		</div>
+	</div>
+}
+
+
+
+<div style="width:300px;margin: 0 auto;">
+
+	<a href="/Doer/GetAll" class="btn btn-primary btn-xl text-uppercase">View All Taskers</a>
+</div>
+
+<br />
+
+

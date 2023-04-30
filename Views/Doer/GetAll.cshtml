@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "GetAll";
+	Layout = "_AllTasksLayout";
+}
+
+
+@model List<TaskDoer>
+
+
+@foreach (TaskDoer item in Model)
+{
+
+	<div class="col-lg-4 col-sm-6 mb-4">
+		<!-- Portfolio item 1-->
+		<div class="portfolio-item">
+			<a class="portfolio-link" data-bs-toggle="modal">
+				@*<div class="portfolio-hover">
+			<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+			</div>*@
+				<div class="image-container">
+					<a href="/Doer/GetById/@item.Id"><img class="portfolio-hover img-fluid" src="/Doers/@item.Image" alt="..." style="width:350px;height:250px;border-radius:15px " /></a>
+				</div>
+				<br>
+				<div style="text-align: center;">
+					<a href="/Doer/GetById?Id=@item.Id" class="btn btn-outline-success" style="width:120px;margin:0 auto;">
+						View</a>
+				</div>
+			</a>
+			<div class="portfolio-caption">
+				<div class="portfolio-caption-heading">@item.Name</div>
+				<div class="portfolio-caption-subheading text-muted">Salary Per Hour: @item.SalaryPerHour L.E</div>
+				<div class="portfolio-caption-subheading text-muted">@item.Service</div>
+
+
+			</div>
+		</div>
+	</div>
+	<br />
+}
+<a href="/Task/Index" class="btn btn-outline-success" style="width:250px;margin:0 auto;">Back To Home</a>
+

@@ -1,0 +1,65 @@
+﻿
+@model Order
+@{
+    ViewData["Title"] = "EditOrder";
+	Layout = "_PageWithNavLayout";
+	SelectList taskOptions = new SelectList(ViewBag.tasks, "Title", "Title");
+}
+
+<h1 style="width:40%; margin:0 auto;">Select a Service</h1>
+
+<form method="post" action="/Order/EditOrder/@Model.OrderId" style="width:40%; margin:0 auto;">
+	<div>
+		<label asp-for="PosterName">Enter Your Name</label>
+		<input asp-for="PosterName" class="form-control" />
+		<span asp-validation-for="PosterName" class="text-danger" />
+
+	</div>
+	<div>
+
+		<label asp-for="Phone">Enter Your Phone Number</label>
+		<input asp-for="Phone" class="form-control" />
+		<span asp-validation-for="Phone" class="text-danger" />
+
+	</div>
+
+	<div>
+		<label asp-for="Address">Enter Your Address</label>
+		<input asp-for="Address" class="form-control" />
+		<span asp-validation-for="Address" class="text-danger" />
+
+	</div>
+	<div>
+		<label asp-for="mail">Enter Your Mail</label>
+		<input asp-for="mail" class="form-control" />
+		<span asp-validation-for="mail" class="text-danger" />
+
+	</div>
+	<div>
+		<input asp-for="UserName" type="hidden" value="@User.Identity.Name" class="form-control" />
+
+	</div>
+	<div>
+		<label asp-for="ServiceType">Select Your Service</label>
+		<select asp-for="ServiceType" asp-items="taskOptions" class="form-control">
+			<option value="">Select a Service</option>
+		</select>
+		<span asp-validation-for="ServiceType" class="text-danger" />
+	</div>
+	@*<div>
+		<input type="hidden" name="OrderId" value="@Model.OrderId">
+
+	</div>*@
+
+	<br />
+	<input type="submit" class="btn btn-primary" value="Apply" />
+	<a href="/Task/ShowAllServices" class="btn btn-primary">Cancel</a>
+
+</form>
+@section scripts{
+	<script src="~/lib//jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+}
+

@@ -1,0 +1,63 @@
+﻿@model Final_Project.ViewModel.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "_PageWithNavLayout";
+}
+
+<section class="vh-100 gradient-custom" >
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-4" style="width:40%; margin:0 auto;">
+                <div class="card bg-dark text-white" style="border-radius: 1rem; height:700px">
+                    <div class="card-body p-5 text-center">
+                        <div class="mb-md-5 mt-md-4 pb-5">
+                            <h2 class="fw-bold mb-2 text-uppercase" style="font-family:'Arial Rounded MT'; font-size: 2rem;">Register</h2>
+                            <p class="text-white-50 mb-5">Please enter your details to register.</p>
+                            <form asp-action="Register">
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label asp-for="UserName" class="control-label" style="font-family:'Arial Rounded MT'; font-size:19px;">User Name</label>
+                                    <input asp-for="UserName" class="form-control form-control-lg" />
+                                    <span asp-validation-for="UserName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label" style="font-family:'Arial Rounded MT'; font-size:19px;">Email</label>
+                                    <input asp-for="Email" class="form-control form-control-lg" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Password" class="control-label" style="font-family:'Arial Rounded MT'; font-size:19px;">Password</label>
+                                    <input asp-for="Password" class="form-control form-control-lg" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ConfirmPassword" class="control-label" style="font-family:'Arial Rounded MT'; font-size:19px;">Confirm Password</label>
+                                    <input asp-for="ConfirmPassword" class="form-control form-control-lg" />
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <input type="submit" value="Register" class="btn btn-outline-light btn-lg px-5" />
+                                    <br />
+                                    <br />
+                                
+
+                                    <a href="/Task/Index" class="btn btn-outline-light btn-lg px-5 mx-2">Cancel</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
